@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="001b5cbfdc6944d6b7438251c4aebd7f" Name="Diagram1">
+        <EntityTypeShape EntityType="DBIstakikModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIstakikModel.TBLCEKSENET" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIstakikModel.TblDepartman" Width="1.5" PointX="8.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIstakikModel.TBLFIRMA" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIstakikModel.TBLFIRMAHAREKET" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIstakikModel.TBLFIRMAODEME" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIstakikModel.TBLKASA" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIstakikModel.TBLKATEGORI" Width="1.5" PointX="3.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIstakikModel.TBLKULLANICI" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIstakikModel.TBLMUSTERI" Width="1.5" PointX="8.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIstakikModel.TBLMUSTERIBORC" Width="1.5" PointX="11" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIstakikModel.TBLMUSTERIODEME" Width="1.5" PointX="11" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIstakikModel.TBLPersonel" Width="1.5" PointX="11" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIstakikModel.TBLPersonelOdeme" Width="1.5" PointX="13.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIstakikModel.TBLURUNLER" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="DBIstakikModel.FK_TBLCEKSENET_TBLFIRMA" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIstakikModel.FK_TBLPersonel_TblDepartman" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIstakikModel.FK_TBLFIRMAHAREKET_TBLFIRMA" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIstakikModel.FK_TBLFIRMAODEME_TBLFIRMA" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIstakikModel.FK_TBLURUNLER_TBLFIRMA" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIstakikModel.FK_TBLFIRMAHAREKET_TBLURUNLER" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIstakikModel.FK_TBLURUNLER_TBLKATEGORI" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIstakikModel.FK_TBLMUSTERIBORC_TBLMUSTERI" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIstakikModel.FK_TBLMUSTERIODEME_TBLMUSTERI" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIstakikModel.FK_TBLPersonelOdeme_TBLPersonel" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

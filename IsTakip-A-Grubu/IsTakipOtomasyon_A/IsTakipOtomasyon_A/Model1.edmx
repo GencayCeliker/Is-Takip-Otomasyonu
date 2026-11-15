@@ -1,0 +1,949 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DbIstakip25_AModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TBLBORC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TARIH" Type="date" />
+          <Property Name="TUTAR" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ACIKLAMA" Type="nvarchar" MaxLength="1000" />
+          <Property Name="MUSTERI" Type="int" />
+        </EntityType>
+        <EntityType Name="TBLCEKSENET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIRMA" Type="int" />
+          <Property Name="TUR" Type="char" MaxLength="5" />
+          <Property Name="YAZMATARIHI" Type="date" />
+          <Property Name="ODEMETARIHI" Type="date" />
+          <Property Name="DURUMU" Type="bit" />
+          <Property Name="TUTAR" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ACIKLAMA" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBLDEPARTMAN">
+          <Key>
+            <PropertyRef Name="DEPID" />
+          </Key>
+          <Property Name="DEPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DEPARTMAN" Type="nvarchar" MaxLength="50" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBLFIRMA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIRMA" Type="nvarchar" MaxLength="50" />
+          <Property Name="TEL" Type="nvarchar" MaxLength="20" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBLFIRMAHAREKETLERI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="URUN" Type="int" />
+          <Property Name="ACIKLAMA" Type="nvarchar" MaxLength="500" />
+          <Property Name="TUTAR" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TARIH" Type="date" />
+          <Property Name="ADET" Type="int" />
+          <Property Name="FIRMA" Type="int" />
+        </EntityType>
+        <EntityType Name="TBLFIRMAYAODEME">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIRMA" Type="int" />
+          <Property Name="TARIH" Type="date" />
+          <Property Name="TUTAR" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ACIKLAMA" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBLKASA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TUR" Type="nvarchar" MaxLength="5" />
+          <Property Name="TARIH" Type="date" />
+          <Property Name="TUTAR" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ACIKLAMA" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="TBLKATEGORI">
+          <Key>
+            <PropertyRef Name="KATEGORIID" />
+          </Key>
+          <Property Name="KATEGORIID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KATEGORI" Type="nvarchar" MaxLength="50" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBLKULLANICI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADISOYADI" Type="nvarchar" MaxLength="50" />
+          <Property Name="KULLANICIADI" Type="nvarchar" MaxLength="50" />
+          <Property Name="SIFRE" Type="nvarchar" MaxLength="20" />
+          <Property Name="MAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="YETKI" Type="char" MaxLength="1" />
+          <Property Name="PERSONEL" Type="bit" />
+          <Property Name="DEPARTMAN" Type="bit" />
+          <Property Name="CEKSENET" Type="bit" />
+          <Property Name="MUSTERI" Type="bit" />
+          <Property Name="STOKTAKIP" Type="bit" />
+          <Property Name="KASA" Type="bit" />
+          <Property Name="URUNLER" Type="bit" />
+          <Property Name="VERITABANI" Type="bit" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBLMUSTERI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="nvarchar" MaxLength="50" />
+          <Property Name="SOYAD" Type="nvarchar" MaxLength="50" />
+          <Property Name="TEL" Type="nvarchar" MaxLength="20" />
+          <Property Name="ISLEMSAYISI" Type="int" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBLODEME">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TARIH" Type="date" />
+          <Property Name="TUTAR" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ACIKLAMA" Type="nvarchar" MaxLength="1000" />
+          <Property Name="MUSTERI" Type="int" />
+        </EntityType>
+        <EntityType Name="TBLPERSONEL">
+          <Key>
+            <PropertyRef Name="PERSID" />
+          </Key>
+          <Property Name="PERSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADI" Type="nvarchar" MaxLength="50" />
+          <Property Name="SOYADI" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOGUMYERI" Type="nvarchar" MaxLength="30" />
+          <Property Name="DOGUMTARIHI" Type="smalldatetime" />
+          <Property Name="MAAS" Type="money" />
+          <Property Name="DEPARTMAN" Type="int" />
+          <Property Name="MEDENI" Type="bit" />
+          <Property Name="RESIM" Type="nvarchar" MaxLength="250" />
+          <Property Name="TEL" Type="nvarchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="ADRES" Type="nvarchar" MaxLength="250" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBLPERSONELEODEME">
+          <Key>
+            <PropertyRef Name="ODEMEID" />
+          </Key>
+          <Property Name="ODEMEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TUR" Type="nvarchar" MaxLength="50" />
+          <Property Name="TARIH" Type="date" />
+          <Property Name="ODENEN" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PERSONEL" Type="int" />
+        </EntityType>
+        <EntityType Name="TBLURUNLER">
+          <Key>
+            <PropertyRef Name="URUNID" />
+          </Key>
+          <Property Name="URUNID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="URUNADI" Type="nvarchar" MaxLength="50" />
+          <Property Name="MARKA" Type="nvarchar" MaxLength="50" />
+          <Property Name="ALISFIYATI" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SATISFIYATI" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="STOKADET" Type="int" />
+          <Property Name="KATEGORI" Type="int" />
+          <Property Name="FIRMA" Type="int" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <Association Name="FK_TBLBORC_TBLMUSTERI">
+          <End Role="TBLMUSTERI" Type="Self.TBLMUSTERI" Multiplicity="0..1" />
+          <End Role="TBLBORC" Type="Self.TBLBORC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLMUSTERI">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLBORC">
+              <PropertyRef Name="MUSTERI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLCEKSENET_TBLFIRMA">
+          <End Role="TBLFIRMA" Type="Self.TBLFIRMA" Multiplicity="0..1" />
+          <End Role="TBLCEKSENET" Type="Self.TBLCEKSENET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLFIRMA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLCEKSENET">
+              <PropertyRef Name="FIRMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLFIRMAHAREKETLERI_TBLFIRMA">
+          <End Role="TBLFIRMA" Type="Self.TBLFIRMA" Multiplicity="0..1" />
+          <End Role="TBLFIRMAHAREKETLERI" Type="Self.TBLFIRMAHAREKETLERI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLFIRMA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLFIRMAHAREKETLERI">
+              <PropertyRef Name="FIRMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLFIRMAHAREKETLERI_TBLURUNLER">
+          <End Role="TBLURUNLER" Type="Self.TBLURUNLER" Multiplicity="0..1" />
+          <End Role="TBLFIRMAHAREKETLERI" Type="Self.TBLFIRMAHAREKETLERI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLURUNLER">
+              <PropertyRef Name="URUNID" />
+            </Principal>
+            <Dependent Role="TBLFIRMAHAREKETLERI">
+              <PropertyRef Name="URUN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLFIRMAYAODEME_TBLFIRMA">
+          <End Role="TBLFIRMA" Type="Self.TBLFIRMA" Multiplicity="0..1" />
+          <End Role="TBLFIRMAYAODEME" Type="Self.TBLFIRMAYAODEME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLFIRMA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLFIRMAYAODEME">
+              <PropertyRef Name="FIRMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLODEME_TBLMUSTERI">
+          <End Role="TBLMUSTERI" Type="Self.TBLMUSTERI" Multiplicity="0..1" />
+          <End Role="TBLODEME" Type="Self.TBLODEME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLMUSTERI">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLODEME">
+              <PropertyRef Name="MUSTERI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLPERSONEL_TBLDEPARTMAN">
+          <End Role="TBLDEPARTMAN" Type="Self.TBLDEPARTMAN" Multiplicity="0..1" />
+          <End Role="TBLPERSONEL" Type="Self.TBLPERSONEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLDEPARTMAN">
+              <PropertyRef Name="DEPID" />
+            </Principal>
+            <Dependent Role="TBLPERSONEL">
+              <PropertyRef Name="DEPARTMAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLPERSONELEODEME_TBLPERSONEL">
+          <End Role="TBLPERSONEL" Type="Self.TBLPERSONEL" Multiplicity="0..1" />
+          <End Role="TBLPERSONELEODEME" Type="Self.TBLPERSONELEODEME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLPERSONEL">
+              <PropertyRef Name="PERSID" />
+            </Principal>
+            <Dependent Role="TBLPERSONELEODEME">
+              <PropertyRef Name="PERSONEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLURUNLER_TBLFIRMA">
+          <End Role="TBLFIRMA" Type="Self.TBLFIRMA" Multiplicity="0..1" />
+          <End Role="TBLURUNLER" Type="Self.TBLURUNLER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLFIRMA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLURUNLER">
+              <PropertyRef Name="FIRMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLURUNLER_TBLKATEGORI">
+          <End Role="TBLKATEGORI" Type="Self.TBLKATEGORI" Multiplicity="0..1" />
+          <End Role="TBLURUNLER" Type="Self.TBLURUNLER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLKATEGORI">
+              <PropertyRef Name="KATEGORIID" />
+            </Principal>
+            <Dependent Role="TBLURUNLER">
+              <PropertyRef Name="KATEGORI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbIstakip25_AModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLBORC" EntityType="Self.TBLBORC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLCEKSENET" EntityType="Self.TBLCEKSENET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLDEPARTMAN" EntityType="Self.TBLDEPARTMAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLFIRMA" EntityType="Self.TBLFIRMA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLFIRMAHAREKETLERI" EntityType="Self.TBLFIRMAHAREKETLERI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLFIRMAYAODEME" EntityType="Self.TBLFIRMAYAODEME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLKASA" EntityType="Self.TBLKASA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLKATEGORI" EntityType="Self.TBLKATEGORI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLKULLANICI" EntityType="Self.TBLKULLANICI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLMUSTERI" EntityType="Self.TBLMUSTERI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLODEME" EntityType="Self.TBLODEME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLPERSONEL" EntityType="Self.TBLPERSONEL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLPERSONELEODEME" EntityType="Self.TBLPERSONELEODEME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLURUNLER" EntityType="Self.TBLURUNLER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBLBORC_TBLMUSTERI" Association="Self.FK_TBLBORC_TBLMUSTERI">
+            <End Role="TBLMUSTERI" EntitySet="TBLMUSTERI" />
+            <End Role="TBLBORC" EntitySet="TBLBORC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLCEKSENET_TBLFIRMA" Association="Self.FK_TBLCEKSENET_TBLFIRMA">
+            <End Role="TBLFIRMA" EntitySet="TBLFIRMA" />
+            <End Role="TBLCEKSENET" EntitySet="TBLCEKSENET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLFIRMAHAREKETLERI_TBLFIRMA" Association="Self.FK_TBLFIRMAHAREKETLERI_TBLFIRMA">
+            <End Role="TBLFIRMA" EntitySet="TBLFIRMA" />
+            <End Role="TBLFIRMAHAREKETLERI" EntitySet="TBLFIRMAHAREKETLERI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLFIRMAHAREKETLERI_TBLURUNLER" Association="Self.FK_TBLFIRMAHAREKETLERI_TBLURUNLER">
+            <End Role="TBLURUNLER" EntitySet="TBLURUNLER" />
+            <End Role="TBLFIRMAHAREKETLERI" EntitySet="TBLFIRMAHAREKETLERI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLFIRMAYAODEME_TBLFIRMA" Association="Self.FK_TBLFIRMAYAODEME_TBLFIRMA">
+            <End Role="TBLFIRMA" EntitySet="TBLFIRMA" />
+            <End Role="TBLFIRMAYAODEME" EntitySet="TBLFIRMAYAODEME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLODEME_TBLMUSTERI" Association="Self.FK_TBLODEME_TBLMUSTERI">
+            <End Role="TBLMUSTERI" EntitySet="TBLMUSTERI" />
+            <End Role="TBLODEME" EntitySet="TBLODEME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLPERSONEL_TBLDEPARTMAN" Association="Self.FK_TBLPERSONEL_TBLDEPARTMAN">
+            <End Role="TBLDEPARTMAN" EntitySet="TBLDEPARTMAN" />
+            <End Role="TBLPERSONEL" EntitySet="TBLPERSONEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLPERSONELEODEME_TBLPERSONEL" Association="Self.FK_TBLPERSONELEODEME_TBLPERSONEL">
+            <End Role="TBLPERSONEL" EntitySet="TBLPERSONEL" />
+            <End Role="TBLPERSONELEODEME" EntitySet="TBLPERSONELEODEME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLURUNLER_TBLFIRMA" Association="Self.FK_TBLURUNLER_TBLFIRMA">
+            <End Role="TBLFIRMA" EntitySet="TBLFIRMA" />
+            <End Role="TBLURUNLER" EntitySet="TBLURUNLER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLURUNLER_TBLKATEGORI" Association="Self.FK_TBLURUNLER_TBLKATEGORI">
+            <End Role="TBLKATEGORI" EntitySet="TBLKATEGORI" />
+            <End Role="TBLURUNLER" EntitySet="TBLURUNLER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbIstakip25_AModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TBLDEPARTMAN">
+          <Key>
+            <PropertyRef Name="DEPID" />
+          </Key>
+          <Property Name="DEPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEPARTMAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBLPERSONEL" Relationship="Self.FK_TBLPERSONEL_TBLDEPARTMAN" FromRole="TBLDEPARTMAN" ToRole="TBLPERSONEL" />
+          <Property Name="DURUM" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TBLPERSONEL">
+          <Key>
+            <PropertyRef Name="PERSID" />
+          </Key>
+          <Property Name="PERSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SOYADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOGUMYERI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DOGUMTARIHI" Type="DateTime" Precision="0" />
+          <Property Name="MAAS" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DEPARTMAN" Type="Int32" />
+          <Property Name="MEDENI" Type="Boolean" />
+          <Property Name="RESIM" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TEL" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ADRES" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DURUM" Type="Boolean" />
+          <NavigationProperty Name="TBLDEPARTMAN" Relationship="Self.FK_TBLPERSONEL_TBLDEPARTMAN" FromRole="TBLPERSONEL" ToRole="TBLDEPARTMAN" />
+          <NavigationProperty Name="TBLPERSONELEODEME" Relationship="DbIstakip25_AModel.FK_TBLPERSONELEODEME_TBLPERSONEL" FromRole="TBLPERSONEL" ToRole="TBLPERSONELEODEME" />
+        </EntityType>
+        <Association Name="FK_TBLPERSONEL_TBLDEPARTMAN">
+          <End Role="TBLDEPARTMAN" Type="Self.TBLDEPARTMAN" Multiplicity="0..1" />
+          <End Role="TBLPERSONEL" Type="Self.TBLPERSONEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLDEPARTMAN">
+              <PropertyRef Name="DEPID" />
+            </Principal>
+            <Dependent Role="TBLPERSONEL">
+              <PropertyRef Name="DEPARTMAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbIstakip25_AEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TBLDEPARTMAN" EntityType="Self.TBLDEPARTMAN" />
+          <EntitySet Name="TBLPERSONEL" EntityType="Self.TBLPERSONEL" />
+          <AssociationSet Name="FK_TBLPERSONEL_TBLDEPARTMAN" Association="Self.FK_TBLPERSONEL_TBLDEPARTMAN">
+            <End Role="TBLDEPARTMAN" EntitySet="TBLDEPARTMAN" />
+            <End Role="TBLPERSONEL" EntitySet="TBLPERSONEL" />
+          </AssociationSet>
+          <EntitySet Name="TBLPERSONELEODEME" EntityType="DbIstakip25_AModel.TBLPERSONELEODEME" />
+          <AssociationSet Name="FK_TBLPERSONELEODEME_TBLPERSONEL" Association="DbIstakip25_AModel.FK_TBLPERSONELEODEME_TBLPERSONEL">
+            <End Role="TBLPERSONEL" EntitySet="TBLPERSONEL" />
+            <End Role="TBLPERSONELEODEME" EntitySet="TBLPERSONELEODEME" />
+          </AssociationSet>
+          <EntitySet Name="TBLKASA" EntityType="DbIstakip25_AModel.TBLKASA" />
+          <EntitySet Name="TBLBORC" EntityType="DbIstakip25_AModel.TBLBORC" />
+          <EntitySet Name="TBLMUSTERI" EntityType="DbIstakip25_AModel.TBLMUSTERI" />
+          <EntitySet Name="TBLODEME" EntityType="DbIstakip25_AModel.TBLODEME" />
+          <AssociationSet Name="FK_TBLBORC_TBLMUSTERI" Association="DbIstakip25_AModel.FK_TBLBORC_TBLMUSTERI">
+            <End Role="TBLMUSTERI" EntitySet="TBLMUSTERI" />
+            <End Role="TBLBORC" EntitySet="TBLBORC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLODEME_TBLMUSTERI" Association="DbIstakip25_AModel.FK_TBLODEME_TBLMUSTERI">
+            <End Role="TBLMUSTERI" EntitySet="TBLMUSTERI" />
+            <End Role="TBLODEME" EntitySet="TBLODEME" />
+          </AssociationSet>
+          <EntitySet Name="TBLCEKSENET" EntityType="DbIstakip25_AModel.TBLCEKSENET" />
+          <EntitySet Name="TBLFIRMA" EntityType="DbIstakip25_AModel.TBLFIRMA" />
+          <EntitySet Name="TBLFIRMAHAREKETLERI" EntityType="DbIstakip25_AModel.TBLFIRMAHAREKETLERI" />
+          <EntitySet Name="TBLFIRMAYAODEME" EntityType="DbIstakip25_AModel.TBLFIRMAYAODEME" />
+          <EntitySet Name="TBLKATEGORI" EntityType="DbIstakip25_AModel.TBLKATEGORI" />
+          <EntitySet Name="TBLURUNLER" EntityType="DbIstakip25_AModel.TBLURUNLER" />
+          <AssociationSet Name="FK_TBLCEKSENET_TBLFIRMA" Association="DbIstakip25_AModel.FK_TBLCEKSENET_TBLFIRMA">
+            <End Role="TBLFIRMA" EntitySet="TBLFIRMA" />
+            <End Role="TBLCEKSENET" EntitySet="TBLCEKSENET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLFIRMAHAREKETLERI_TBLFIRMA" Association="DbIstakip25_AModel.FK_TBLFIRMAHAREKETLERI_TBLFIRMA">
+            <End Role="TBLFIRMA" EntitySet="TBLFIRMA" />
+            <End Role="TBLFIRMAHAREKETLERI" EntitySet="TBLFIRMAHAREKETLERI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLFIRMAYAODEME_TBLFIRMA" Association="DbIstakip25_AModel.FK_TBLFIRMAYAODEME_TBLFIRMA">
+            <End Role="TBLFIRMA" EntitySet="TBLFIRMA" />
+            <End Role="TBLFIRMAYAODEME" EntitySet="TBLFIRMAYAODEME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLURUNLER_TBLFIRMA" Association="DbIstakip25_AModel.FK_TBLURUNLER_TBLFIRMA">
+            <End Role="TBLFIRMA" EntitySet="TBLFIRMA" />
+            <End Role="TBLURUNLER" EntitySet="TBLURUNLER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLFIRMAHAREKETLERI_TBLURUNLER" Association="DbIstakip25_AModel.FK_TBLFIRMAHAREKETLERI_TBLURUNLER">
+            <End Role="TBLURUNLER" EntitySet="TBLURUNLER" />
+            <End Role="TBLFIRMAHAREKETLERI" EntitySet="TBLFIRMAHAREKETLERI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLURUNLER_TBLKATEGORI" Association="DbIstakip25_AModel.FK_TBLURUNLER_TBLKATEGORI">
+            <End Role="TBLKATEGORI" EntitySet="TBLKATEGORI" />
+            <End Role="TBLURUNLER" EntitySet="TBLURUNLER" />
+          </AssociationSet>
+          <EntitySet Name="TBLKULLANICI" EntityType="DbIstakip25_AModel.TBLKULLANICI" />
+        </EntityContainer>
+        <EntityType Name="TBLPERSONELEODEME">
+          <Key>
+            <PropertyRef Name="ODEMEID" />
+          </Key>
+          <Property Name="ODEMEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TUR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TARIH" Type="DateTime" Precision="0" />
+          <Property Name="ODENEN" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PERSONEL" Type="Int32" />
+          <NavigationProperty Name="TBLPERSONEL" Relationship="DbIstakip25_AModel.FK_TBLPERSONELEODEME_TBLPERSONEL" FromRole="TBLPERSONELEODEME" ToRole="TBLPERSONEL" />
+        </EntityType>
+        <Association Name="FK_TBLPERSONELEODEME_TBLPERSONEL">
+          <End Type="DbIstakip25_AModel.TBLPERSONEL" Role="TBLPERSONEL" Multiplicity="0..1" />
+          <End Type="DbIstakip25_AModel.TBLPERSONELEODEME" Role="TBLPERSONELEODEME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLPERSONEL">
+              <PropertyRef Name="PERSID" />
+            </Principal>
+            <Dependent Role="TBLPERSONELEODEME">
+              <PropertyRef Name="PERSONEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TBLKASA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TUR" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="TARIH" Type="DateTime" Precision="0" />
+          <Property Name="TUTAR" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ACIKLAMA" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBLBORC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TARIH" Type="DateTime" Precision="0" />
+          <Property Name="TUTAR" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ACIKLAMA" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="MUSTERI" Type="Int32" />
+          <NavigationProperty Name="TBLMUSTERI" Relationship="DbIstakip25_AModel.FK_TBLBORC_TBLMUSTERI" FromRole="TBLBORC" ToRole="TBLMUSTERI" />
+        </EntityType>
+        <EntityType Name="TBLMUSTERI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TEL" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ISLEMSAYISI" Type="Int32" />
+          <Property Name="DURUM" Type="Boolean" />
+          <NavigationProperty Name="TBLBORC" Relationship="DbIstakip25_AModel.FK_TBLBORC_TBLMUSTERI" FromRole="TBLMUSTERI" ToRole="TBLBORC" />
+          <NavigationProperty Name="TBLODEME" Relationship="DbIstakip25_AModel.FK_TBLODEME_TBLMUSTERI" FromRole="TBLMUSTERI" ToRole="TBLODEME" />
+        </EntityType>
+        <EntityType Name="TBLODEME">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TARIH" Type="DateTime" Precision="0" />
+          <Property Name="TUTAR" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ACIKLAMA" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="MUSTERI" Type="Int32" />
+          <NavigationProperty Name="TBLMUSTERI" Relationship="DbIstakip25_AModel.FK_TBLODEME_TBLMUSTERI" FromRole="TBLODEME" ToRole="TBLMUSTERI" />
+        </EntityType>
+        <Association Name="FK_TBLBORC_TBLMUSTERI">
+          <End Type="DbIstakip25_AModel.TBLMUSTERI" Role="TBLMUSTERI" Multiplicity="0..1" />
+          <End Type="DbIstakip25_AModel.TBLBORC" Role="TBLBORC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLMUSTERI">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLBORC">
+              <PropertyRef Name="MUSTERI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLODEME_TBLMUSTERI">
+          <End Type="DbIstakip25_AModel.TBLMUSTERI" Role="TBLMUSTERI" Multiplicity="0..1" />
+          <End Type="DbIstakip25_AModel.TBLODEME" Role="TBLODEME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLMUSTERI">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLODEME">
+              <PropertyRef Name="MUSTERI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TBLCEKSENET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIRMA" Type="Int32" />
+          <Property Name="TUR" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="YAZMATARIHI" Type="DateTime" Precision="0" />
+          <Property Name="ODEMETARIHI" Type="DateTime" Precision="0" />
+          <Property Name="DURUMU" Type="Boolean" />
+          <Property Name="TUTAR" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ACIKLAMA" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBLFIRMA" Relationship="DbIstakip25_AModel.FK_TBLCEKSENET_TBLFIRMA" FromRole="TBLCEKSENET" ToRole="TBLFIRMA" />
+        </EntityType>
+        <EntityType Name="TBLFIRMA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIRMA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TEL" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DURUM" Type="Boolean" />
+          <NavigationProperty Name="TBLCEKSENET" Relationship="DbIstakip25_AModel.FK_TBLCEKSENET_TBLFIRMA" FromRole="TBLFIRMA" ToRole="TBLCEKSENET" />
+          <NavigationProperty Name="TBLFIRMAHAREKETLERI" Relationship="DbIstakip25_AModel.FK_TBLFIRMAHAREKETLERI_TBLFIRMA" FromRole="TBLFIRMA" ToRole="TBLFIRMAHAREKETLERI" />
+          <NavigationProperty Name="TBLFIRMAYAODEME" Relationship="DbIstakip25_AModel.FK_TBLFIRMAYAODEME_TBLFIRMA" FromRole="TBLFIRMA" ToRole="TBLFIRMAYAODEME" />
+          <NavigationProperty Name="TBLURUNLER" Relationship="DbIstakip25_AModel.FK_TBLURUNLER_TBLFIRMA" FromRole="TBLFIRMA" ToRole="TBLURUNLER" />
+        </EntityType>
+        <EntityType Name="TBLFIRMAHAREKETLERI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="URUN" Type="Int32" />
+          <Property Name="ACIKLAMA" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TUTAR" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TARIH" Type="DateTime" Precision="0" />
+          <Property Name="ADET" Type="Int32" />
+          <Property Name="FIRMA" Type="Int32" />
+          <NavigationProperty Name="TBLFIRMA" Relationship="DbIstakip25_AModel.FK_TBLFIRMAHAREKETLERI_TBLFIRMA" FromRole="TBLFIRMAHAREKETLERI" ToRole="TBLFIRMA" />
+          <NavigationProperty Name="TBLURUNLER" Relationship="DbIstakip25_AModel.FK_TBLFIRMAHAREKETLERI_TBLURUNLER" FromRole="TBLFIRMAHAREKETLERI" ToRole="TBLURUNLER" />
+        </EntityType>
+        <EntityType Name="TBLFIRMAYAODEME">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIRMA" Type="Int32" />
+          <Property Name="TARIH" Type="DateTime" Precision="0" />
+          <Property Name="TUTAR" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ACIKLAMA" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBLFIRMA" Relationship="DbIstakip25_AModel.FK_TBLFIRMAYAODEME_TBLFIRMA" FromRole="TBLFIRMAYAODEME" ToRole="TBLFIRMA" />
+        </EntityType>
+        <EntityType Name="TBLKATEGORI">
+          <Key>
+            <PropertyRef Name="KATEGORIID" />
+          </Key>
+          <Property Name="KATEGORIID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KATEGORI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DURUM" Type="Boolean" />
+          <NavigationProperty Name="TBLURUNLER" Relationship="DbIstakip25_AModel.FK_TBLURUNLER_TBLKATEGORI" FromRole="TBLKATEGORI" ToRole="TBLURUNLER" />
+        </EntityType>
+        <EntityType Name="TBLURUNLER">
+          <Key>
+            <PropertyRef Name="URUNID" />
+          </Key>
+          <Property Name="URUNID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="URUNADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MARKA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ALISFIYATI" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SATISFIYATI" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="STOKADET" Type="Int32" />
+          <Property Name="KATEGORI" Type="Int32" />
+          <Property Name="FIRMA" Type="Int32" />
+          <Property Name="DURUM" Type="Boolean" />
+          <NavigationProperty Name="TBLFIRMA" Relationship="DbIstakip25_AModel.FK_TBLURUNLER_TBLFIRMA" FromRole="TBLURUNLER" ToRole="TBLFIRMA" />
+          <NavigationProperty Name="TBLFIRMAHAREKETLERI" Relationship="DbIstakip25_AModel.FK_TBLFIRMAHAREKETLERI_TBLURUNLER" FromRole="TBLURUNLER" ToRole="TBLFIRMAHAREKETLERI" />
+          <NavigationProperty Name="TBLKATEGORI" Relationship="DbIstakip25_AModel.FK_TBLURUNLER_TBLKATEGORI" FromRole="TBLURUNLER" ToRole="TBLKATEGORI" />
+        </EntityType>
+        <Association Name="FK_TBLCEKSENET_TBLFIRMA">
+          <End Type="DbIstakip25_AModel.TBLFIRMA" Role="TBLFIRMA" Multiplicity="0..1" />
+          <End Type="DbIstakip25_AModel.TBLCEKSENET" Role="TBLCEKSENET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLFIRMA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLCEKSENET">
+              <PropertyRef Name="FIRMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLFIRMAHAREKETLERI_TBLFIRMA">
+          <End Type="DbIstakip25_AModel.TBLFIRMA" Role="TBLFIRMA" Multiplicity="0..1" />
+          <End Type="DbIstakip25_AModel.TBLFIRMAHAREKETLERI" Role="TBLFIRMAHAREKETLERI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLFIRMA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLFIRMAHAREKETLERI">
+              <PropertyRef Name="FIRMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLFIRMAYAODEME_TBLFIRMA">
+          <End Type="DbIstakip25_AModel.TBLFIRMA" Role="TBLFIRMA" Multiplicity="0..1" />
+          <End Type="DbIstakip25_AModel.TBLFIRMAYAODEME" Role="TBLFIRMAYAODEME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLFIRMA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLFIRMAYAODEME">
+              <PropertyRef Name="FIRMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLURUNLER_TBLFIRMA">
+          <End Type="DbIstakip25_AModel.TBLFIRMA" Role="TBLFIRMA" Multiplicity="0..1" />
+          <End Type="DbIstakip25_AModel.TBLURUNLER" Role="TBLURUNLER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLFIRMA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLURUNLER">
+              <PropertyRef Name="FIRMA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLFIRMAHAREKETLERI_TBLURUNLER">
+          <End Type="DbIstakip25_AModel.TBLURUNLER" Role="TBLURUNLER" Multiplicity="0..1" />
+          <End Type="DbIstakip25_AModel.TBLFIRMAHAREKETLERI" Role="TBLFIRMAHAREKETLERI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLURUNLER">
+              <PropertyRef Name="URUNID" />
+            </Principal>
+            <Dependent Role="TBLFIRMAHAREKETLERI">
+              <PropertyRef Name="URUN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLURUNLER_TBLKATEGORI">
+          <End Type="DbIstakip25_AModel.TBLKATEGORI" Role="TBLKATEGORI" Multiplicity="0..1" />
+          <End Type="DbIstakip25_AModel.TBLURUNLER" Role="TBLURUNLER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLKATEGORI">
+              <PropertyRef Name="KATEGORIID" />
+            </Principal>
+            <Dependent Role="TBLURUNLER">
+              <PropertyRef Name="KATEGORI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TBLKULLANICI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADISOYADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KULLANICIADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SIFRE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YETKI" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PERSONEL" Type="Boolean" />
+          <Property Name="DEPARTMAN" Type="Boolean" />
+          <Property Name="CEKSENET" Type="Boolean" />
+          <Property Name="MUSTERI" Type="Boolean" />
+          <Property Name="STOKTAKIP" Type="Boolean" />
+          <Property Name="KASA" Type="Boolean" />
+          <Property Name="URUNLER" Type="Boolean" />
+          <Property Name="VERITABANI" Type="Boolean" />
+          <Property Name="DURUM" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbIstakip25_AModelStoreContainer" CdmEntityContainer="DbIstakip25_AEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLDEPARTMAN">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.TBLDEPARTMAN">
+              <MappingFragment StoreEntitySet="TBLDEPARTMAN">
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="DEPID" ColumnName="DEPID" />
+                <ScalarProperty Name="DEPARTMAN" ColumnName="DEPARTMAN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLPERSONEL">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.TBLPERSONEL">
+              <MappingFragment StoreEntitySet="TBLPERSONEL">
+                <ScalarProperty Name="PERSID" ColumnName="PERSID" />
+                <ScalarProperty Name="ADI" ColumnName="ADI" />
+                <ScalarProperty Name="SOYADI" ColumnName="SOYADI" />
+                <ScalarProperty Name="DOGUMYERI" ColumnName="DOGUMYERI" />
+                <ScalarProperty Name="DOGUMTARIHI" ColumnName="DOGUMTARIHI" />
+                <ScalarProperty Name="MAAS" ColumnName="MAAS" />
+                <ScalarProperty Name="DEPARTMAN" ColumnName="DEPARTMAN" />
+                <ScalarProperty Name="MEDENI" ColumnName="MEDENI" />
+                <ScalarProperty Name="RESIM" ColumnName="RESIM" />
+                <ScalarProperty Name="TEL" ColumnName="TEL" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLPERSONELEODEME">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.TBLPERSONELEODEME">
+              <MappingFragment StoreEntitySet="TBLPERSONELEODEME">
+                <ScalarProperty Name="PERSONEL" ColumnName="PERSONEL" />
+                <ScalarProperty Name="ODENEN" ColumnName="ODENEN" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="TUR" ColumnName="TUR" />
+                <ScalarProperty Name="ODEMEID" ColumnName="ODEMEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLKASA">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.TBLKASA">
+              <MappingFragment StoreEntitySet="TBLKASA">
+                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+                <ScalarProperty Name="TUTAR" ColumnName="TUTAR" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="TUR" ColumnName="TUR" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLBORC">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.TBLBORC">
+              <MappingFragment StoreEntitySet="TBLBORC">
+                <ScalarProperty Name="MUSTERI" ColumnName="MUSTERI" />
+                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+                <ScalarProperty Name="TUTAR" ColumnName="TUTAR" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLMUSTERI">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.TBLMUSTERI">
+              <MappingFragment StoreEntitySet="TBLMUSTERI">
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="ISLEMSAYISI" ColumnName="ISLEMSAYISI" />
+                <ScalarProperty Name="TEL" ColumnName="TEL" />
+                <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLODEME">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.TBLODEME">
+              <MappingFragment StoreEntitySet="TBLODEME">
+                <ScalarProperty Name="MUSTERI" ColumnName="MUSTERI" />
+                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+                <ScalarProperty Name="TUTAR" ColumnName="TUTAR" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLCEKSENET">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.TBLCEKSENET">
+              <MappingFragment StoreEntitySet="TBLCEKSENET">
+                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+                <ScalarProperty Name="TUTAR" ColumnName="TUTAR" />
+                <ScalarProperty Name="DURUMU" ColumnName="DURUMU" />
+                <ScalarProperty Name="ODEMETARIHI" ColumnName="ODEMETARIHI" />
+                <ScalarProperty Name="YAZMATARIHI" ColumnName="YAZMATARIHI" />
+                <ScalarProperty Name="TUR" ColumnName="TUR" />
+                <ScalarProperty Name="FIRMA" ColumnName="FIRMA" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLFIRMA">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.TBLFIRMA">
+              <MappingFragment StoreEntitySet="TBLFIRMA">
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="TEL" ColumnName="TEL" />
+                <ScalarProperty Name="FIRMA" ColumnName="FIRMA" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLFIRMAHAREKETLERI">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.TBLFIRMAHAREKETLERI">
+              <MappingFragment StoreEntitySet="TBLFIRMAHAREKETLERI">
+                <ScalarProperty Name="FIRMA" ColumnName="FIRMA" />
+                <ScalarProperty Name="ADET" ColumnName="ADET" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="TUTAR" ColumnName="TUTAR" />
+                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+                <ScalarProperty Name="URUN" ColumnName="URUN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLFIRMAYAODEME">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.TBLFIRMAYAODEME">
+              <MappingFragment StoreEntitySet="TBLFIRMAYAODEME">
+                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+                <ScalarProperty Name="TUTAR" ColumnName="TUTAR" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="FIRMA" ColumnName="FIRMA" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLKATEGORI">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.TBLKATEGORI">
+              <MappingFragment StoreEntitySet="TBLKATEGORI">
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="KATEGORI" ColumnName="KATEGORI" />
+                <ScalarProperty Name="KATEGORIID" ColumnName="KATEGORIID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLURUNLER">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.TBLURUNLER">
+              <MappingFragment StoreEntitySet="TBLURUNLER">
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="FIRMA" ColumnName="FIRMA" />
+                <ScalarProperty Name="KATEGORI" ColumnName="KATEGORI" />
+                <ScalarProperty Name="STOKADET" ColumnName="STOKADET" />
+                <ScalarProperty Name="SATISFIYATI" ColumnName="SATISFIYATI" />
+                <ScalarProperty Name="ALISFIYATI" ColumnName="ALISFIYATI" />
+                <ScalarProperty Name="MARKA" ColumnName="MARKA" />
+                <ScalarProperty Name="URUNADI" ColumnName="URUNADI" />
+                <ScalarProperty Name="URUNID" ColumnName="URUNID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLKULLANICI">
+            <EntityTypeMapping TypeName="DbIstakip25_AModel.TBLKULLANICI">
+              <MappingFragment StoreEntitySet="TBLKULLANICI">
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="VERITABANI" ColumnName="VERITABANI" />
+                <ScalarProperty Name="URUNLER" ColumnName="URUNLER" />
+                <ScalarProperty Name="KASA" ColumnName="KASA" />
+                <ScalarProperty Name="STOKTAKIP" ColumnName="STOKTAKIP" />
+                <ScalarProperty Name="MUSTERI" ColumnName="MUSTERI" />
+                <ScalarProperty Name="CEKSENET" ColumnName="CEKSENET" />
+                <ScalarProperty Name="DEPARTMAN" ColumnName="DEPARTMAN" />
+                <ScalarProperty Name="PERSONEL" ColumnName="PERSONEL" />
+                <ScalarProperty Name="YETKI" ColumnName="YETKI" />
+                <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+                <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
+                <ScalarProperty Name="KULLANICIADI" ColumnName="KULLANICIADI" />
+                <ScalarProperty Name="ADISOYADI" ColumnName="ADISOYADI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

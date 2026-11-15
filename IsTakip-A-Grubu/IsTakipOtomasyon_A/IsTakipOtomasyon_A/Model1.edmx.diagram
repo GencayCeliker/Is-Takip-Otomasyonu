@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c2de435b91c845928cc28e2abf2d1535" Name="Diagram1">
+        <EntityTypeShape EntityType="DbIstakip25_AModel.sysdiagrams" Width="1.5" PointX="6.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbIstakip25_AModel.TBLDEPARTMAN" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbIstakip25_AModel.TBLPERSONEL" Width="1.5" PointX="4" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="DbIstakip25_AModel.FK_TBLPERSONEL_TBLDEPARTMAN" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DbIstakip25_AModel.TBLPERSONELEODEME" Width="1.5" PointX="9.875" PointY="4.75" />
+        <AssociationConnector Association="DbIstakip25_AModel.FK_TBLPERSONELEODEME_TBLPERSONEL" />
+        <EntityTypeShape EntityType="DbIstakip25_AModel.TBLKASA" Width="1.5" PointX="11.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DbIstakip25_AModel.TBLBORC" Width="1.5" PointX="3" PointY="9" />
+        <EntityTypeShape EntityType="DbIstakip25_AModel.TBLMUSTERI" Width="1.5" PointX="0.75" PointY="7.375" />
+        <EntityTypeShape EntityType="DbIstakip25_AModel.TBLODEME" Width="1.5" PointX="3" PointY="6.125" />
+        <AssociationConnector Association="DbIstakip25_AModel.FK_TBLBORC_TBLMUSTERI" />
+        <AssociationConnector Association="DbIstakip25_AModel.FK_TBLODEME_TBLMUSTERI" />
+        <EntityTypeShape EntityType="DbIstakip25_AModel.TBLCEKSENET" Width="1.5" PointX="5.875" PointY="12" />
+        <EntityTypeShape EntityType="DbIstakip25_AModel.TBLFIRMA" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="DbIstakip25_AModel.TBLFIRMAHAREKETLERI" Width="1.5" PointX="9.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DbIstakip25_AModel.TBLFIRMAYAODEME" Width="1.5" PointX="5.875" PointY="5.625" />
+        <EntityTypeShape EntityType="DbIstakip25_AModel.TBLKATEGORI" Width="1.5" PointX="3.625" PointY="0.5" />
+        <EntityTypeShape EntityType="DbIstakip25_AModel.TBLURUNLER" Width="1.5" PointX="7.625" PointY="2.875" />
+        <AssociationConnector Association="DbIstakip25_AModel.FK_TBLCEKSENET_TBLFIRMA" />
+        <AssociationConnector Association="DbIstakip25_AModel.FK_TBLFIRMAHAREKETLERI_TBLFIRMA" />
+        <AssociationConnector Association="DbIstakip25_AModel.FK_TBLFIRMAYAODEME_TBLFIRMA" />
+        <AssociationConnector Association="DbIstakip25_AModel.FK_TBLURUNLER_TBLFIRMA" />
+        <AssociationConnector Association="DbIstakip25_AModel.FK_TBLFIRMAHAREKETLERI_TBLURUNLER" />
+        <AssociationConnector Association="DbIstakip25_AModel.FK_TBLURUNLER_TBLKATEGORI" />
+        <EntityTypeShape EntityType="DbIstakip25_AModel.TBLKULLANICI" Width="1.5" PointX="8.375" PointY="7.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
