@@ -53,3 +53,7 @@ Depoda projenin **iki sürümü** bulunur:
 **Demo giriş (iki sürüm):** Kullanıcı adı `ik`, şifre `61` (tüm modüllere yetkili)
 
 > Örnek verilerdeki TC Kimlik ve telefon numaraları gerçek değildir. Yedekten geri yükleme özelliği, SQL Server servis hesabının erişebildiği bir klasördeki `.bak` dosyasıyla çalışır.
+
+## 📄 Lisans
+
+Bu proje [MIT](LICENSE) lisansı altında sunulmuştur.
