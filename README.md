@@ -17,6 +17,23 @@ Depoda projenin **iki sürümü** bulunur:
 
 ---
 
+## 🎬 Demo
+
+![demo-a-grubu](docs/demo-a-grubu.gif)
+
+**A Grubu sürümü:** giriş ve modüller (personel, çek/senet, müşteri, stok, kasa, ürünler).
+
+![demo-projemiz](docs/demo-projemiz.gif)
+
+**Projemiz sürümü:** giriş ve modüller.
+
+| Personel takip | Müşteri takip: ödeme ve veresiye hareketleri | Kasa: gelir/gider |
+| --- | --- | --- |
+| ![Personel takip](docs/personel.png) | ![Müşteri takip: ödeme ve veresiye hareketleri](docs/musteri.png) | ![Kasa: gelir/gider](docs/kasa.png) |
+
+> Görüntüler, depodaki kurulum script'iyle kurulan örnek veritabanı üzerinde uygulama çalıştırılarak alınmıştır.
+
+
 ## 🚀 Özellikler
 
 - **Giriş ve yetkilendirme:** Kullanıcı adı ve şifre ile giriş. Her kullanıcı için hangi modülleri (Personel, Departman, Çek/Senet, Müşteri, Stok, Kasa, Ürünler, Veri Tabanı) kullanabileceği ayrı ayrı belirlenir.
